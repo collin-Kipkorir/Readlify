@@ -15,45 +15,69 @@ firebase.initializeApp(firebaseConfig);
 // Reference to Firebase Database
 const database = firebase.database();
 
-// Function to fetch books from Firebase
+// Function to fetch books and group them by categories
 function fetchBooksFromFirebase() {
-    const bookList = document.getElementById('book-list');
-    bookList.innerHTML = '';
+    const container = document.querySelector('.container');
+    container.innerHTML = '';
 
     // Reference to the 'books' node in Firebase
     const booksRef = database.ref('books');
 
     // Fetching data from Firebase
     booksRef.once('value', (snapshot) => {
-        snapshot.forEach((childSnapshot) => {
-            const book = childSnapshot.val();
-            const bookElement = document.createElement('div');
-            bookElement.classList.add('col-6', 'col-md-3', 'mb-4');
-            bookElement.innerHTML = `
-                <div class="card">
-                    <img src="${book.cover}" class="card-img-top" alt="${book.title}">
-                    <div class="card-body">
-                        <h5 class="card-title">${book.title}</h5>
-                        <p class="card-text">Author: ${book.author}</p>
-                        <p class="card-text">Price: Ksh.${book.price.toFixed(2)}</p>
-                        <button class="btn btn-primary" onclick="addToCart('${childSnapshot.key}')">Add to Cart</button>
+        const books = snapshot.val();
+        const categories = {};
+
+        // Group books by category
+        Object.keys(books).forEach((bookId) => {
+            const book = books[bookId];
+            const category = book.category || 'Uncategorized';
+            if (!categories[category]) {
+                categories[category] = [];
+            }
+            categories[category].push({ ...book, id: bookId });
+        });
+
+        // Render categories and books
+        Object.keys(categories).forEach((category) => {
+            const categoryElement = document.createElement('div');
+            categoryElement.classList.add('category');
+            categoryElement.innerHTML = `
+                <h6>${category}</h6>
+                <div class="books-container-wrapper">
+                    <div class="books-container row" id="book-list-${category}">
+                        <!-- Books will be injected here by JavaScript -->
                     </div>
+                    <button class="scroll-right" onclick="scrollRight('${category}')">&rarr;</button>
                 </div>
             `;
-            bookList.appendChild(bookElement);
+            container.appendChild(categoryElement);
+
+            const bookList = document.getElementById(`book-list-${category}`);
+            categories[category].forEach((book) => {
+                const bookElement = document.createElement('div');
+                bookElement.classList.add('col-6', 'col-md-3', 'col-lg-2', 'mb-4');
+                bookElement.innerHTML = `
+                    <div class="card">
+                        <img src="${book.cover}" class="card-img-top" alt="${book.title}">
+                        <div class="card-body">
+                            <h5 class="card-title">${book.title}</h5>
+                            <p class="card-text">Author: ${book.author}</p>
+                            <p class="card-text">Price: Ksh.${book.price.toFixed(2)}</p>
+                            <button class="btn btn-primary" onclick="addToCart('${book.id}')">Add to Cart</button>
+                        </div>
+                    </div>
+                `;
+                bookList.appendChild(bookElement);
+            });
         });
     });
 }
 
-// Function to render books initially
-function renderBooks() {
-    fetchBooksFromFirebase();
+function scrollRight(category) {
+    const bookList = document.getElementById(`book-list-${category}`);
+    bookList.scrollBy({ left: 200, behavior: 'smooth' });
 }
-
-// Initialize rendering on page load
-document.addEventListener('DOMContentLoaded', () => {
-    renderBooks();
-});
 
 // Cart functionality
 let cart = [];
@@ -80,7 +104,7 @@ function renderCart() {
             <div class="card">
                 <img src="${item.cover}" class="card-img-top" alt="${item.title}">
                 <div class="card-body">
-                    <h5 class="card-title">${item.title}</h5>
+                    <h6 class="card-title">${item.title}</h6>
                     <p class="card-text">Price: Ksh.${item.price.toFixed(2)}</p>
                     <button class="btn btn-danger" onclick="removeFromCart('${item.id}')">Remove</button>
                 </div>
@@ -100,3 +124,8 @@ function checkout() {
     cart = [];
     renderCart();
 }
+
+// Initialize rendering on page load
+document.addEventListener('DOMContentLoaded', () => {
+    fetchBooksFromFirebase();
+});

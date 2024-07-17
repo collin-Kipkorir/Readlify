@@ -10,7 +10,7 @@
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand" href="#">Readify</a>
+    <a class="navbar-brand" href="#" style="-webkit-text-fill-color: aliceblue;">Readify</a>
     <ul class="navbar-nav ml-auto">
         <li class="nav-item">
             <a class="nav-link" href="#" data-toggle="modal" data-target="#cartModal">
@@ -21,9 +21,13 @@
 </nav>
 
 <div class="container">
-    <div class="row" id="book-list">
-        <!-- Books will be injected here by JavaScript -->
+    <div class="category" id="best-selling">
+        <h2>Best-selling and Popular eBooks</h2>
+        <div class="books-container row" id="book-list-best-selling">
+            <!-- Books will be injected here by JavaScript -->
+        </div>
     </div>
+    <!-- Add more categories as needed -->
 </div>
 
 <!-- Cart Modal -->
@@ -48,6 +52,54 @@
         </div>
     </div>
 </div>
+
+<!-- Footer -->
+<footer class="footer bg-dark text-white py-4">
+    <div class="container">
+        <div class="row">
+            <!-- About Section -->
+            <div class="col-md-3 mb-4">
+                <h5>About Readify</h5>
+                <p>Readify is your go-to online ebook store. Explore a wide range of ebooks across different genres. Enjoy seamless shopping and reading experience.</p>
+            </div>
+            <!-- Contact Section -->
+            <div class="col-md-3 mb-4">
+                <h5>Contact Us</h5>
+                <ul class="list-unstyled">
+                    <li>Email: support@readify.com</li>
+                    <li>Phone: +1 234 567 890</li>
+                    <li>Address: 1234 Ebook St, Reading City, RD 56789</li>
+                </ul>
+            </div>
+            <!-- Social Media Section -->
+            <div class="col-md-3 mb-4">
+                <h5>Follow Us</h5>
+                <div class="social-links">
+                    <a href="#" class="btn btn-outline-light btn-social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="btn btn-outline-light btn-social"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="btn btn-outline-light btn-social"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="btn btn-outline-light btn-social"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <!-- Subscription Form -->
+            <div class="col-md-3 mb-4">
+                <h5>Subscribe to our Newsletter</h5>
+                <form id="subscription-form">
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <p class="mb-0">&copy; 2024 Readify. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Font Awesome -->
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>

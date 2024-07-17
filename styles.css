@@ -1,30 +1,66 @@
 body {
     background-color: #f8f9fa;
 }
-.navbar{
-    background-color: gainsboro;
+
+.navbar {
+    background-color: #343a40;
 }
-.navbar-brand{
-    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+.navbar-brand {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: white;
+}
+
+.category {
+    margin-bottom: 20px;
+}
+
+.category h2 {
+    margin-bottom: 10px;
+}
+
+.books-container-wrapper {
+    position: relative;
+    overflow: hidden;
+    padding-right: 40px; /* Space for scroll button */
+}
+
+.books-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+}
+
+.books-container::-webkit-scrollbar {
+    display: none;
 }
 
 .card {
     border: 1px solid #dee2e6;
+    min-width: 150px; /* Adjust as needed */
 }
-.card-text{
+
+.card-text {
     font-size: 11px;
 }
-.card-title{
+
+.card-title {
     font-size: 13px;
 }
+
 .card-body {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
 }
-.container{
+.btn{
+    align-items: center;  
+}
+.container {
     margin-top: 10px;
 }
+
 .card-img-top {
     width: 100%;
     height: auto;
@@ -40,6 +76,7 @@ body {
     display: flex;
     align-items: center;
 }
+
 .badge {
     position: absolute;
     top: 0;
@@ -47,4 +84,64 @@ body {
     margin: 10px;
     transform: translate(10%, -10%);
     font-size: 0.55rem;
+}
+
+.footer {
+    background-color: #343a40;
+    color: white;
+}
+
+.footer h5 {
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.footer p, .footer ul {
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.footer .social-links a {
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.footer .social-links a:hover {
+    color: #007bff;
+}
+
+.footer .text-center p {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+}
+
+.footer .form-group {
+    margin-bottom: 1rem;
+}
+
+.footer .form-control {
+    border-radius: 0.25rem;
+}
+
+.footer .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.footer .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+.scroll-right {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    background: #343a40;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
 }
