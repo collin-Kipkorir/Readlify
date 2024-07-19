@@ -60,6 +60,7 @@ body {
     flex: 0 0 auto; /* Prevent shrinking and ensure items stay in row */
     width: 180px; /* Fixed width for consistency */
     min-width: 120px; /* Ensure minimum width */
+    max-width: 180px;
     margin: 0; /* Remove extra margin */
     box-sizing: border-box; /* Ensure padding and border are included in width */
 }
