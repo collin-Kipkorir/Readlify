@@ -82,20 +82,26 @@ body {
 /* Card title and text */
 .card-title {
     font-size: 1.1rem; /* Slightly larger font size */
-    margin-bottom: 5px; /* Reduce space below title */
+    margin-bottom: 2px; /* Reduce space below title */
 }
 
 .card-text {
     font-size: 0.9rem; /* Slightly larger font size */
-    margin-bottom: 5px; /* Reduce space below text */
+    margin-bottom: 2px; /* Reduce space below text */
+}
+
+/* Button container */
+.button-container {
+    text-align: center; /* Center-align the button */
 }
 
 /* Button styles */
 .btn {
-    font-size: 0.9rem; /* Adjust font size for button */
+    font-size: 1rem;
     border-radius: 0.25rem;
-    margin-top: 10px; /* Reduce space above button */
-    padding: 5px 10px; /* Adjust padding inside button */
+    margin-top: 10px; /* Space above button */
+    padding: 8px 16px; /* Adjust padding inside button */
+    display: inline-block; /* Ensure button is inline-block */
 }
 
 .btn-primary {
