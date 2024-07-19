@@ -22,7 +22,7 @@ body {
 /* Category section */
 .category-section {
     margin-bottom: 20px;
-    text-underline-position: below;
+
 }
 
 .category-section h2 {
@@ -34,7 +34,6 @@ body {
 .books-container-wrapper {
     position: relative;
     overflow: hidden;
-    padding-right: 10px; /* Space for scroll button */
     margin-bottom: 20px; /* Space below books container */
 }
 
@@ -59,7 +58,7 @@ body {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     background-color: #ffffff;
     flex: 0 0 auto; /* Prevent shrinking and ensure items stay in row */
-    width: 200px; /* Fixed width for consistency */
+    width: 180px; /* Fixed width for consistency */
     min-width: 120px; /* Ensure minimum width */
     margin: 0; /* Remove extra margin */
     box-sizing: border-box; /* Ensure padding and border are included in width */
@@ -124,11 +123,11 @@ body {
     color: #343a40; /* Dark color for the arrow */
     border: none;
     border-radius: 50%; /* Circular button */
-    padding: 12px; /* Increased padding for better touch */
+    padding: 8px; /* Increased padding for better touch */
     cursor: pointer;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
     z-index: 1;
-    font-size: 1.5rem; /* Larger font size */
+    font-size: 1rem; /* Larger font size */
 }
 
 /* Hover state for better visibility */
