@@ -167,14 +167,11 @@ body {
     max-width: 100%; /* Full width on smaller screens */
     margin: 0 auto;
 }
-.p{
-    font-size: 10px;
-}
 
 /* Responsive Design Adjustments */
 @media (max-width: 992px) {
     .card {
-        width: 180px; /* Adjust width for tablets */
+        width: 200px; /* Adjust width for tablets */
     }
 
     .navbar-brand {
@@ -188,7 +185,7 @@ body {
 
 @media (max-width: 768px) {
     .card {
-        width: 150px; /* Adjust width for mobile */
+        width: 200px; /* Adjust width for mobile */
     }
 
     .navbar-brand {
@@ -197,6 +194,18 @@ body {
 
     .category-section h2 {
         font-size: 1.4rem; /* Adjusted font size */
+    }
+
+    .card-title {
+        font-size: 1rem; /* Smaller font size for mobile */
+    }
+
+    .card-text {
+        font-size: 0.8rem; /* Smaller font size for mobile */
+    }
+
+    .btn {
+        font-size: 0.9rem; /* Smaller font size for mobile buttons */
     }
 }
 
