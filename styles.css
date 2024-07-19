@@ -22,6 +22,7 @@ body {
 /* Category section */
 .category-section {
     margin-bottom: 20px;
+    text-underline-position: below;
 }
 
 .category-section h2 {
@@ -50,6 +51,7 @@ body {
 .books-container::-webkit-scrollbar {
     display: none;
 }
+
 /* Book card */
 .card {
     border: 1px solid #dee2e6;
@@ -58,7 +60,7 @@ body {
     background-color: #ffffff;
     flex: 0 0 auto; /* Prevent shrinking and ensure items stay in row */
     width: 200px; /* Fixed width for consistency */
-    min-width: 100px; /* Ensure minimum width */
+    min-width: 120px; /* Ensure minimum width */
     margin: 0; /* Remove extra margin */
     box-sizing: border-box; /* Ensure padding and border are included in width */
 }
@@ -72,22 +74,28 @@ body {
     border-top-right-radius: 0.5rem;
 }
 
+/* Card body */
 .card-body {
-    padding: 15px;
+    padding: 10px; /* Reduced padding inside card body */
 }
 
+/* Card title and text */
 .card-title {
     font-size: 1.1rem; /* Slightly larger font size */
+    margin-bottom: 5px; /* Reduce space below title */
 }
 
 .card-text {
     font-size: 0.9rem; /* Slightly larger font size */
+    margin-bottom: 5px; /* Reduce space below text */
 }
 
 /* Button styles */
 .btn {
-    font-size: 1rem;
+    font-size: 0.9rem; /* Adjust font size for button */
     border-radius: 0.25rem;
+    margin-top: 10px; /* Reduce space above button */
+    padding: 5px 10px; /* Adjust padding inside button */
 }
 
 .btn-primary {
@@ -175,14 +183,14 @@ body {
     }
 
     .navbar-brand {
-        font-size: 1.2rem; /* Smaller font size for tablets */
+        font-size: 1rem; /* Smaller font size for tablets */
     }
 
     .category-section h2 {
-        font-size: 1rem; /* Adjusted font size */
+        font-size: 0.8rem; /* Adjusted font size */
     }
     .books-container {
-        min-width: 200px;
+        min-width: 150px; /* Adjust minimum width */
     }
 }
 
@@ -196,23 +204,32 @@ body {
     }
 
     .category-section h2 {
-        font-size: 1rem; /* Adjusted font size */
+        font-size: 0.7rem; /* Adjusted font size */
     }
 
     .card-title {
         font-size: 0.6rem; /* Smaller font size for mobile */
+        margin-bottom: 2px;
+        margin-top: 1px;
     }
 
     .card-text {
         font-size: 0.6rem; /* Smaller font size for mobile */
+        margin-bottom: 2px;
+        color: #343a40;
     }
 
     .btn {
         font-size: 0.5rem; /* Smaller font size for mobile buttons */
+        margin-bottom: 2px;
     }
 }
 
 @media (max-width: 576px) {
+    .category-section h2 {
+        font-size: 0.7rem; /* Adjusted font size */
+    }
+
     .card {
         width: 100%; /* Full width for smaller screens */
         margin: 0 5px; /* Space between cards */
