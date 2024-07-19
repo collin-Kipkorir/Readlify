@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <!-- Add Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+    <style>
+        /* Add your styles here */
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .admin-panel {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .admin-panel form div {
+            margin-bottom: 15px;
+        }
+        .admin-panel form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .admin-panel form input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .admin-panel form button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .admin-panel .book-list div {
+            margin-bottom: 10px;
+        }
+        .admin-panel .book-list h5 {
+            margin: 0 0 5px;
+        }
+        .admin-panel .book-list p {
+            margin: 5px 0;
+        }
+        .admin-panel .book-list button {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-panel">
+        <h2>Admin Panel</h2>
+        <form id="book-form">
+            <input type="hidden" id="book-id" value="">
+            <div>
+                <label for="title">Title:</label>
+                <input type="text" id="title" required>
+            </div>
+            <div>
+                <label for="author">Author:</label>
+                <input type="text" id="author" required>
+            </div>
+            <div>
+                <label for="price">Price:</label>
+                <input type="number" id="price" step="0.01" required>
+            </div>
+            <div>
+                <label for="cover">Cover URL:</label>
+                <input type="url" id="cover" required>
+            </div>
+            <div>
+                <label for="category">Category:</label>
+                <input type="text" id="category" required>
+            </div>
+            <button type="submit">Save Book</button>
+        </form>
+        <div id="admin-book-list" class="book-list">
+            <!-- Books will be listed here with edit and delete buttons -->
+        </div>
+    </div>
+
+    <!-- Firebase and Admin Panel Script -->
+    <script>
+        // Your Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCPwIKt_nGGpv37HXgzcZGsgVtGDthAMuQ",
+            authDomain: "readify-b4360.firebaseapp.com",
+            projectId: "readify-b4360",
+            storageBucket: "readify-b4360.appspot.com",
+            messagingSenderId: "822651381463",
+            appId: "1:822651381463:web:6c19064b270baeb3c2f292",
+            measurementId: "G-LD328TQNYN"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        const bookForm = document.getElementById('book-form');
+        const adminBookList = document.getElementById('admin-book-list');
+        const bookIdInput = document.getElementById('book-id');
+        const titleInput = document.getElementById('title');
+        const authorInput = document.getElementById('author');
+        const priceInput = document.getElementById('price');
+        const coverInput = document.getElementById('cover');
+        const categoryInput = document.getElementById('category');
+
+        bookForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const bookId = bookIdInput.value;
+            const book = {
+                title: titleInput.value,
+                author: authorInput.value,
+                price: parseFloat(priceInput.value),
+                cover: coverInput.value,
+                category: categoryInput.value
+            };
+            if (bookId) {
+                updateBookInFirebase(bookId, book);
+            } else {
+                addBookToFirebase(book);
+            }
+        });
+
+        function addBookToFirebase(book) {
+            const booksRef = database.ref('books');
+            booksRef.push(book).then(() => {
+                bookForm.reset();
+                fetchAdminBooks();
+            });
+        }
+
+        function updateBookInFirebase(bookId, book) {
+            const bookRef = database.ref('books').child(bookId);
+            bookRef.set(book).then(() => {
+                bookForm.reset();
+                fetchAdminBooks();
+            });
+        }
+
+        function deleteBookFromFirebase(bookId) {
+            const bookRef = database.ref('books').child(bookId);
+            bookRef.remove().then(() => {
+                fetchAdminBooks();
+            });
+        }
+
+        function fetchAdminBooks() {
+            const booksRef = database.ref('books');
+            booksRef.once('value', (snapshot) => {
+                const books = snapshot.val();
+                adminBookList.innerHTML = '';
+                Object.keys(books).forEach((bookId) => {
+                    const book = books[bookId];
+                    const bookElement = document.createElement('div');
+                    bookElement.innerHTML = `
+                        <div>
+                            <h5>${book.title}</h5>
+                            <p>Author: ${book.author}</p>
+                            <p>Price: Ksh.${book.price.toFixed(2)}</p>
+                            <p>Category: ${book.category}</p>
+                            <button onclick="editBook('${bookId}')">Edit</button>
+                            <button onclick="deleteBookFromFirebase('${bookId}')">Delete</button>
+                        </div>
+                    `;
+                    adminBookList.appendChild(bookElement);
+                });
+            });
+        }
+
+        function editBook(bookId) {
+            const bookRef = database.ref('books').child(bookId);
+            bookRef.once('value', (snapshot) => {
+                const book = snapshot.val();
+                bookIdInput.value = bookId;
+                titleInput.value = book.title;
+                authorInput.value = book.author;
+                priceInput.value = book.price;
+                coverInput.value = book.cover;
+                categoryInput.value = book.category;
+            });
+        }
+
+        // Initialize admin panel on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchAdminBooks();
+        });
+    </script>
+</body>
+</html>
