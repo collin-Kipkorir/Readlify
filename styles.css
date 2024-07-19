@@ -197,15 +197,15 @@ body {
     }
 
     .card-title {
-        font-size: 1rem; /* Smaller font size for mobile */
+        font-size: 0.6rem; /* Smaller font size for mobile */
     }
 
     .card-text {
-        font-size: 0.8rem; /* Smaller font size for mobile */
+        font-size: 0.6rem; /* Smaller font size for mobile */
     }
 
     .btn {
-        font-size: 0.9rem; /* Smaller font size for mobile buttons */
+        font-size: 0.5rem; /* Smaller font size for mobile buttons */
     }
 }
 
