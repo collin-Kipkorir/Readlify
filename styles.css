@@ -1,118 +1,154 @@
+/* General body and font settings */
 body {
     background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #212529;
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
 }
 
+/* Navbar */
 .navbar {
     background-color: #343a40;
+    padding: 10px 15px; /* Adjusted padding */
 }
 
 .navbar-brand {
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    color: white;
+    font-family: 'Impact', 'Arial Narrow Bold', sans-serif;
+    color: #ffffff;
+    font-size: 1.5rem; /* Larger font size for better visibility */
 }
 
-.category {
+/* Category section */
+.category-section {
     margin-bottom: 20px;
 }
 
-.category h2 {
-    margin-bottom: 10px;
+.category-section h2 {
+    margin-bottom: 15px;
+    font-size: 1.75rem; /* Larger font size */
 }
 
+/* Books container */
 .books-container-wrapper {
     position: relative;
     overflow: hidden;
-    padding-right: 40px; /* Space for scroll button */
+    padding-right: 10px; /* Space for scroll button */
+    margin-bottom: 20px; /* Space below books container */
 }
 
 .books-container {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: nowrap; /* Ensure items stay in a single row */
     overflow-x: auto;
     scroll-behavior: smooth;
+    padding: 5px 0;
+    gap: 10px; /* Space between cards */
 }
 
+/* Hide scrollbar */
 .books-container::-webkit-scrollbar {
     display: none;
 }
 
+/* Book card */
 .card {
     border: 1px solid #dee2e6;
-    min-width: 150px; /* Adjust as needed */
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: #ffffff;
+    flex: 0 0 auto; /* Prevent shrinking and ensure items stay in row */
+    width: 200px; /* Fixed width for consistency */
+    margin: 0; /* Remove extra margin */
+    box-sizing: border-box; /* Ensure padding and border are included in width */
 }
 
-.card-text {
-    font-size: 11px;
-}
-
-.card-title {
-    font-size: 13px;
+/* Adjust card image */
+.card-img-top {
+    width: 100%;
+    height: 200px; /* Adjusted height for better fit */
+    object-fit: cover;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
 }
 
 .card-body {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-}
-.btn{
-    align-items: center;  
-}
-.container {
-    margin-top: 10px;
+    padding: 15px;
 }
 
-.card-img-top {
-    width: 100%;
-    height: auto;
-    max-height: 150px;
-    object-fit: cover;
+.card-title {
+    font-size: 1.1rem; /* Slightly larger font size */
 }
 
-.cart-item .card-img-top {
-    max-height: 80px;
+.card-text {
+    font-size: 0.9rem; /* Slightly larger font size */
 }
 
-.modal-body .cart-item {
-    display: flex;
-    align-items: center;
+/* Button styles */
+.btn {
+    font-size: 1rem;
+    border-radius: 0.25rem;
 }
 
-.badge {
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+/* Scroll button */
+.scroll-right {
     position: absolute;
-    top: 0;
+    top: 50%;
     right: 0;
-    margin: 10px;
-    transform: translate(10%, -10%);
-    font-size: 0.55rem;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    color: #343a40; /* Dark color for the arrow */
+    border: none;
+    border-radius: 50%; /* Circular button */
+    padding: 12px; /* Increased padding for better touch */
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+    z-index: 1;
+    font-size: 1.5rem; /* Larger font size */
 }
 
+/* Hover state for better visibility */
+.scroll-right:hover {
+    background: rgba(255, 255, 255, 1); /* Fully opaque background on hover */
+    color: #007bff; /* Change arrow color on hover */
+}
+
+/* Footer */
 .footer {
     background-color: #343a40;
     color: white;
+    padding: 20px 15px; /* Adjusted padding */
+    text-align: center; /* Center-align footer content */
 }
 
 .footer h5 {
     font-weight: bold;
-    margin-bottom: 1rem;
+    margin-bottom: 15px; /* Reduced margin */
 }
 
 .footer p, .footer ul {
-    font-size: 0.9rem;
+    font-size: 0.9rem; /* Adjusted font size */
     line-height: 1.6;
 }
 
 .footer .social-links a {
-    font-size: 1.2rem;
+    font-size: 1.5rem; /* Larger icons for social links */
+    color: white;
     transition: color 0.3s ease;
 }
 
 .footer .social-links a:hover {
     color: #007bff;
-}
-
-.footer .text-center p {
-    margin-top: 1rem;
-    font-size: 0.85rem;
 }
 
 .footer .form-group {
@@ -121,27 +157,70 @@ body {
 
 .footer .form-control {
     border-radius: 0.25rem;
+    border: 1px solid #ced4da;
+    width: 100%; /* Ensure form control is responsive */
 }
 
-.footer .btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
+/* Form control and buttons in modals */
+.form-control {
+    width: 100%;
+    max-width: 100%; /* Full width on smaller screens */
+    margin: 0 auto;
+}
+.p{
+    font-size: 10px;
 }
 
-.footer .btn-primary:hover {
-    background-color: #0056b3;
-    border-color: #004085;
+/* Responsive Design Adjustments */
+@media (max-width: 992px) {
+    .card {
+        width: 180px; /* Adjust width for tablets */
+    }
+
+    .navbar-brand {
+        font-size: 1.2rem; /* Smaller font size for tablets */
+    }
+
+    .category-section h2 {
+        font-size: 1.5rem; /* Adjusted font size */
+    }
 }
 
-.scroll-right {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    background: #343a40;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 1;
+@media (max-width: 768px) {
+    .card {
+        width: 150px; /* Adjust width for mobile */
+    }
+
+    .navbar-brand {
+        font-size: 1.1rem; /* Smaller font size for mobile */
+    }
+
+    .category-section h2 {
+        font-size: 1.4rem; /* Adjusted font size */
+    }
+}
+
+@media (max-width: 576px) {
+    .card {
+        width: 100%; /* Full width for smaller screens */
+        margin: 0 5px; /* Space between cards */
+    }
+
+    .card-img-top {
+        height: 150px; /* Adjust height for smaller screens */
+    }
+
+    .footer h5 {
+        font-size: 1.2rem; /* Adjusted font size */
+    }
+
+    .footer p, .footer ul {
+        font-size: 0.8rem; /* Smaller font size */
+    }
+
+    /* Scroll button */
+    .scroll-right {
+        padding: 8px; /* Smaller padding */
+        font-size: 1rem; /* Slightly smaller font size */
+    }
 }
