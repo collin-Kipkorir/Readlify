@@ -50,7 +50,6 @@ body {
 .books-container::-webkit-scrollbar {
     display: none;
 }
-
 /* Book card */
 .card {
     border: 1px solid #dee2e6;
@@ -59,6 +58,7 @@ body {
     background-color: #ffffff;
     flex: 0 0 auto; /* Prevent shrinking and ensure items stay in row */
     width: 200px; /* Fixed width for consistency */
+    min-width: 100px; /* Ensure minimum width */
     margin: 0; /* Remove extra margin */
     box-sizing: border-box; /* Ensure padding and border are included in width */
 }
@@ -179,7 +179,10 @@ body {
     }
 
     .category-section h2 {
-        font-size: 1.5rem; /* Adjusted font size */
+        font-size: 1rem; /* Adjusted font size */
+    }
+    .books-container {
+        min-width: 200px;
     }
 }
 
@@ -193,7 +196,7 @@ body {
     }
 
     .category-section h2 {
-        font-size: 1.4rem; /* Adjusted font size */
+        font-size: 1rem; /* Adjusted font size */
     }
 
     .card-title {
