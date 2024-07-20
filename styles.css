@@ -193,6 +193,7 @@ body {
 @media (max-width: 992px) {
     .card {
         width: 200px; /* Adjust width for tablets */
+        min-width: 170px; /* Adjust minimum width */
     }
 
     .navbar-brand {
@@ -203,7 +204,7 @@ body {
         font-size: 0.8rem; /* Adjusted font size */
     }
     .books-container {
-        min-width: 170px; /* Adjust minimum width */
+        min-width: 180px; /* Adjust minimum width */
     }
 }
 
