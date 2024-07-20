@@ -59,7 +59,7 @@ body {
     background-color: #ffffff;
     flex: 0 0 auto; /* Prevent shrinking and ensure items stay in row */
     width: 180px; /* Fixed width for consistency */
-    min-width: 170px; /* Ensure minimum width */
+    min-width: 160px; /* Ensure minimum width */
     max-width: 180px;
     margin: 0; /* Remove extra margin */
     box-sizing: border-box; /* Ensure padding and border are included in width */
@@ -86,7 +86,7 @@ body {
     max-lines: 3;
     color: #004085;
     display: -webkit-box;
-    -webkit-line-clamp: 3; /* Limit to 3 lines */
+    -webkit-line-clamp: 2; /* Limit to 3 lines */
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -193,7 +193,7 @@ body {
 @media (max-width: 992px) {
     .card {
         width: 200px; /* Adjust width for tablets */
-        min-width: 180px; /* Adjust minimum width */
+        min-width: 160px; /* Adjust minimum width */
     }
 
     .navbar-brand {
@@ -204,14 +204,14 @@ body {
         font-size: 0.8rem; /* Adjusted font size */
     }
     .books-container {
-        min-width: 170px; /* Adjust minimum width */
+        min-width: 150px; /* Adjust minimum width */
     }
 }
 
 @media (max-width: 768px) {
     .card {
         width: 200px; /* Adjust width for mobile */
-        min-width: 170px; /* Adjust minimum width */
+        min-width: 150px; /* Adjust minimum width */
     }
 
     .navbar-brand {
@@ -255,7 +255,7 @@ body {
     .card {
         width: 100%; /* Full width for smaller screens */
         margin: 0 5px; /* Space between cards */
-        min-width: 170px; /* Adjust minimum width */
+        min-width: 150px; /* Adjust minimum width */
     }
 
     .card-img-top {
