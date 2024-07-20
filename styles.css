@@ -211,7 +211,7 @@ body {
 @media (max-width: 768px) {
     .card {
         width: 200px; /* Adjust width for mobile */
-        min-width: 140px; /* Adjust minimum width */
+        min-width: 150px; /* Adjust minimum width */
     }
 
     .navbar-brand {
