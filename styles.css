@@ -255,7 +255,30 @@ body {
     .card {
         width: 100%; /* Full width for smaller screens */
         margin: 0 5px; /* Space between cards */
-        min-width: 140px; /* Adjust minimum width */
+        min-width: 130px; /* Adjust minimum width */
+    }
+    .card-title {
+        font-size: 0.7rem; /* Smaller font size for mobile */
+        margin-bottom: 2px;
+        margin-top: 1px;
+        color: #004085;
+        display: -webkit-box;
+        -webkit-line-clamp: 2; /* Limit to 3 lines */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+
+    .card-text {
+        font-size: 0.6rem; /* Smaller font size for mobile */
+        margin-bottom: 2px;
+        color: #343a40;
+    }
+
+    .btn {
+        font-size: 0.5rem; /* Smaller font size for mobile buttons */
+        margin-bottom: 2px;
     }
 
     .card-img-top {
