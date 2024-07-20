@@ -84,6 +84,12 @@ body {
     font-size: 1.1rem; /* Slightly larger font size */
     margin-bottom: 2px; /* Reduce space below title */
     max-lines: 3;
+    color: #004085;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limit to 3 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .card-text {

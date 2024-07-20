@@ -63,7 +63,7 @@ const firebaseConfig = {
                           <div class="card-body">
                               <h5 class="card-title">${book.title}</h5>
                               <p class="card-text">Author: ${book.author}</p>
-                              <p class="card-text">Price: Ksh.${book.price.toFixed(2)}</p>
+                              <p class="card-text">Ksh.${book.price.toFixed(2)}</p>
                               <div class="button-container">
         <button class="btn btn-primary" onclick="addToCart('${book.id}')">Add to Cart</button>
     </div>
