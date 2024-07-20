@@ -204,14 +204,14 @@ body {
         font-size: 0.8rem; /* Adjusted font size */
     }
     .books-container {
-        min-width: 180px; /* Adjust minimum width */
+        min-width: 170px; /* Adjust minimum width */
     }
 }
 
 @media (max-width: 768px) {
     .card {
         width: 200px; /* Adjust width for mobile */
-        min-width: 180px; /* Adjust minimum width */
+        min-width: 170px; /* Adjust minimum width */
     }
 
     .navbar-brand {
@@ -255,7 +255,7 @@ body {
     .card {
         width: 100%; /* Full width for smaller screens */
         margin: 0 5px; /* Space between cards */
-        min-width: 180px; /* Adjust minimum width */
+        min-width: 170px; /* Adjust minimum width */
     }
 
     .card-img-top {
