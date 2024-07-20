@@ -76,7 +76,7 @@ body {
 
 /* Card body */
 .card-body {
-    padding: 10px; /* Reduced padding inside card body */
+    padding: 5px; /* Reduced padding inside card body */
 }
 
 /* Card title and text */
@@ -218,7 +218,14 @@ body {
         font-size: 0.6rem; /* Smaller font size for mobile */
         margin-bottom: 2px;
         margin-top: 1px;
+        color: #004085;
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* Limit to 3 lines */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
+    
 
     .card-text {
         font-size: 0.6rem; /* Smaller font size for mobile */
