@@ -6,6 +6,12 @@ body {
     margin: 0; /* Remove default margin */
     padding: 0; /* Remove default padding */
 }
+.navbar .nav-item .badge {
+    top: -6px;
+    right: -10px;
+    background-color: red;
+}
+
 
 /* Navbar */
 .navbar {
