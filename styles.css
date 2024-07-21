@@ -201,7 +201,12 @@ body {
         width: 200px; /* Adjust width for tablets */
         min-width: 150px; /* Adjust minimum width */
     }
-
+    .navbar .nav-item .badge {
+        top: -6px;
+        right: -10px;
+        background-color: red;
+    }
+    
     .navbar-brand {
         font-size: 1rem; /* Smaller font size for tablets */
     }
@@ -219,7 +224,11 @@ body {
         width: 200px; /* Adjust width for mobile */
         min-width: 150px; /* Adjust minimum width */
     }
-
+    .navbar .nav-item .badge {
+        top: -6px;
+        right: -10px;
+        background-color: red;
+    }
     .navbar-brand {
         font-size: 1.1rem; /* Smaller font size for mobile */
     }
@@ -239,8 +248,6 @@ body {
         overflow: hidden;
         text-overflow: ellipsis;
     }
-    
-
     .card-text {
         font-size: 0.6rem; /* Smaller font size for mobile */
         margin-bottom: 2px;
@@ -256,6 +263,11 @@ body {
 @media (max-width: 576px) {
     .category-section h2 {
         font-size: 0.5rem; /* Adjusted font size */
+    }
+    .navbar .nav-item .badge {
+        top: -6px;
+        right: -10px;
+        background-color: red;
     }
 
     .card {
