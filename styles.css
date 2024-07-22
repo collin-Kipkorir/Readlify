@@ -6,17 +6,23 @@ body {
     margin: 0; /* Remove default margin */
     padding: 0; /* Remove default padding */
 }
+.banner{
+    position: relative;
+    overflow: hidden;
+
+    border-radius: 6px;
+}
 .navbar .nav-item .badge {
     top: -6px;
     right: -10px;
     background-color: red;
 }
 
-
 /* Navbar */
 .navbar {
     background-color: #343a40;
     padding: 10px 15px; /* Adjusted padding */
+    position: -webkit-sticky;
 }
 
 .navbar-brand {
@@ -28,7 +34,6 @@ body {
 /* Category section */
 .category-section {
     margin-bottom: 20px;
-
 }
 
 .category-section h2 {
@@ -195,6 +200,31 @@ body {
     margin: 0 auto;
 }
 
+/* Carousel Styles */
+.carousel-item img {
+    width: 100%;
+    height: auto;
+}
+
+/* Modal Styles */
+.modal-header, .modal-body, .modal-footer {
+    padding: 15px;
+}
+
+.modal-title {
+    font-size: 1.5rem;
+}
+
+.modal-body .row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.modal-body .row .col {
+    flex: 1 1 100%;
+    margin-bottom: 15px;
+}
+
 /* Responsive Design Adjustments */
 @media (max-width: 992px) {
     .card {
@@ -209,6 +239,7 @@ body {
     .category-section h2 {
         font-size: 0.8rem; /* Adjusted font size */
     }
+
     .books-container {
         min-width: 150px; /* Adjust minimum width */
     }
@@ -239,7 +270,6 @@ body {
         overflow: hidden;
         text-overflow: ellipsis;
     }
-    
 
     .card-text {
         font-size: 0.6rem; /* Smaller font size for mobile */
@@ -263,6 +293,7 @@ body {
         margin: 0 5px; /* Space between cards */
         min-width: 130px; /* Adjust minimum width */
     }
+
     .card-title {
         font-size: 0.7rem; /* Smaller font size for mobile */
         margin-bottom: 2px;
@@ -274,7 +305,6 @@ body {
         overflow: hidden;
         text-overflow: ellipsis;
     }
-    
 
     .card-text {
         font-size: 0.6rem; /* Smaller font size for mobile */
