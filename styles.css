@@ -3,123 +3,216 @@ body {
     background-color: #f8f9fa;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #212529;
-    margin: 0; /* Remove default margin */
-    padding: 0; /* Remove default padding */
+    margin: 0;
+    padding: 0;
 }
-.banner{
-    position: relative;
-    overflow: hidden;
 
-    border-radius: 6px;
+/* Admin Panel Styles */
+.admin-panel {
+    width: 100%;
+    margin: 0 auto;
 }
+
+.admin-panel form div {
+    margin-bottom: 15px;
+}
+
+.admin-panel form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.admin-panel form input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.admin-panel form button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.admin-panel .book-list div {
+    margin-bottom: 10px;
+}
+
+.admin-panel .book-list h5 {
+    margin: 0 0 5px;
+}
+
+.admin-panel .book-list p {
+    margin: 5px 0;
+}
+
+.admin-panel .book-list button {
+    margin-right: 10px;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #343a40;
+    padding: 10px 15px;
+    position: -webkit-sticky;
+}
+
+.navbar-brand {
+
+    font-weight: bold;
+    font-family: 'Impact', 'Arial Narrow Bold', sans-serif;
+    font-size: 1.5rem;
+}
+
+.navbar-brand img {
+    max-height: 50px;
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: #000;
+    font-weight: bold;
+}
+
 .navbar .nav-item .badge {
     top: -6px;
     right: -10px;
     background-color: red;
 }
 
-/* Navbar */
-.navbar {
-    background-color: #343a40;
-    padding: 10px 15px; /* Adjusted padding */
-    position: -webkit-sticky;
+/* Search Bar */
+.search-bar {
+    width: 300px;
 }
 
-.navbar-brand {
-    font-family: 'Impact', 'Arial Narrow Bold', sans-serif;
-    color: #ffffff;
-    font-size: 1.5rem; /* Larger font size for better visibility */
+.search-bar .input-group {
+    display: flex;
+}
+
+.search-bar .input-group .form-control {
+    border-right: 0;
+}
+
+.search-bar .input-group .input-group-append .btn {
+    border-left: 0;
+    background-color: #FF5733;
+    color: white;
+}
+
+/* Carousel Styles */
+.carousel-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.carousel {
+    width: 100%;
+}
+
+.carousel-item img {
+   max-width: 1200px;
+   margin: 0 auto;
+    justify-content: center;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: transparent;
+    max-width: 700px;
 }
 
 /* Category section */
 .category-section {
     margin-bottom: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+     justify-content: center;
 }
 
 .category-section h2 {
     margin-bottom: 15px;
-    font-size: 1.75rem; /* Larger font size */
+    font-size: 1.75rem;
 }
 
-/* Books container */
+/* Books Container */
 .books-container-wrapper {
     position: relative;
     overflow: hidden;
-    margin-bottom: 20px; /* Space below books container */
+    margin-bottom: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+     justify-content: center;
 }
 
 .books-container {
     display: flex;
-    flex-wrap: nowrap; /* Ensure items stay in a single row */
+    flex-wrap: nowrap;
     overflow-x: auto;
     scroll-behavior: smooth;
     padding: 5px 0;
-    gap: 10px; /* Space between cards */
+    gap: 10px;
 }
 
-/* Hide scrollbar */
 .books-container::-webkit-scrollbar {
     display: none;
 }
 
-/* Book card */
+/* Book Card */
 .card {
     border: 1px solid #dee2e6;
     border-radius: 0.5rem;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     background-color: #ffffff;
-    flex: 0 0 auto; /* Prevent shrinking and ensure items stay in row */
-    width: 180px; /* Fixed width for consistency */
-    min-width: 160px; /* Ensure minimum width */
+    flex: 0 0 auto;
+    width: 180px;
+    min-width: 160px;
     max-width: 180px;
-    margin: 0; /* Remove extra margin */
-    box-sizing: border-box; /* Ensure padding and border are included in width */
+    margin: 0;
+    box-sizing: border-box;
 }
 
-/* Adjust card image */
 .card-img-top {
     width: 100%;
-    height: 200px; /* Adjusted height for better fit */
+    height: 200px;
     object-fit: cover;
     border-top-left-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
 }
 
-/* Card body */
 .card-body {
-    padding: 5px; /* Reduced padding inside card body */
+    padding: 5px;
 }
 
-/* Card title and text */
 .card-title {
-    font-size: 1.1rem; /* Slightly larger font size */
-    margin-bottom: 2px; /* Reduce space below title */
-    max-lines: 3;
+    font-size: 1.1rem;
+    margin-bottom: 2px;
     color: #004085;
     display: -webkit-box;
-    -webkit-line-clamp: 2; /* Limit to 3 lines */
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .card-text {
-    font-size: 0.9rem; /* Slightly larger font size */
-    margin-bottom: 2px; /* Reduce space below text */
+    font-size: 0.9rem;
+    margin-bottom: 2px;
 }
 
-/* Button container */
 .button-container {
-    text-align: center; /* Center-align the button */
+    text-align: center;
 }
 
-/* Button styles */
 .btn {
     font-size: 1rem;
     border-radius: 0.25rem;
-    margin-top: 10px; /* Space above button */
-    padding: 8px 16px; /* Adjust padding inside button */
-    display: inline-block; /* Ensure button is inline-block */
+    margin-top: 10px;
+    padding: 8px 16px;
+    display: inline-block;
 }
 
 .btn-primary {
@@ -132,49 +225,48 @@ body {
     border-color: #004085;
 }
 
-/* Scroll button */
+/* Scroll Button */
 .scroll-right {
     position: absolute;
     top: 50%;
     right: 0;
     transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
-    color: #343a40; /* Dark color for the arrow */
+    background: rgba(255, 255, 255, 0.8);
+    color: #343a40;
     border: none;
-    border-radius: 50%; /* Circular button */
-    padding: 8px; /* Increased padding for better touch */
+    border-radius: 50%;
+    padding: 8px;
     cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     z-index: 1;
-    font-size: 1rem; /* Larger font size */
+    font-size: 1rem;
 }
 
-/* Hover state for better visibility */
 .scroll-right:hover {
-    background: rgba(255, 255, 255, 1); /* Fully opaque background on hover */
-    color: #007bff; /* Change arrow color on hover */
+    background: rgba(255, 255, 255, 1);
+    color: #007bff;
 }
 
 /* Footer */
 .footer {
     background-color: #343a40;
     color: white;
-    padding: 20px 15px; /* Adjusted padding */
-    text-align: center; /* Center-align footer content */
+    padding: 20px 15px;
+    text-align: center;
 }
 
 .footer h5 {
     font-weight: bold;
-    margin-bottom: 15px; /* Reduced margin */
+    margin-bottom: 15px;
 }
 
 .footer p, .footer ul {
-    font-size: 0.9rem; /* Adjusted font size */
+    font-size: 0.9rem;
     line-height: 1.6;
 }
 
 .footer .social-links a {
-    font-size: 1.5rem; /* Larger icons for social links */
+    font-size: 1.5rem;
     color: white;
     transition: color 0.3s ease;
 }
@@ -190,20 +282,13 @@ body {
 .footer .form-control {
     border-radius: 0.25rem;
     border: 1px solid #ced4da;
-    width: 100%; /* Ensure form control is responsive */
+    width: 100%;
 }
 
-/* Form control and buttons in modals */
 .form-control {
     width: 100%;
-    max-width: 100%; /* Full width on smaller screens */
+    max-width: 100%;
     margin: 0 auto;
-}
-
-/* Carousel Styles */
-.carousel-item img {
-    width: 100%;
-    height: auto;
 }
 
 /* Modal Styles */
@@ -228,110 +313,109 @@ body {
 /* Responsive Design Adjustments */
 @media (max-width: 992px) {
     .card {
-        width: 200px; /* Adjust width for tablets */
-        min-width: 150px; /* Adjust minimum width */
+        width: 200px;
+        min-width: 150px;
     }
 
     .navbar-brand {
-        font-size: 1rem; /* Smaller font size for tablets */
+        font-size: 1rem;
     }
 
     .category-section h2 {
-        font-size: 0.8rem; /* Adjusted font size */
+        font-size: 1.5rem;
     }
 
     .books-container {
-        min-width: 150px; /* Adjust minimum width */
+        min-width: 150px;
     }
 }
 
 @media (max-width: 768px) {
     .card {
-        width: 200px; /* Adjust width for mobile */
-        min-width: 150px; /* Adjust minimum width */
+        width: 200px;
+        min-width: 150px;
     }
 
     .navbar-brand {
-        font-size: 1.1rem; /* Smaller font size for mobile */
+        font-size: 1.1rem;
     }
 
     .category-section h2 {
-        font-size: 0.5rem; /* Adjusted font size */
+        font-size: 1.25rem;
     }
 
     .card-title {
-        font-size: 0.6rem; /* Smaller font size for mobile */
+        font-size: 1rem;
         margin-bottom: 2px;
         margin-top: 1px;
         color: #004085;
         display: -webkit-box;
-        -webkit-line-clamp: 2; /* Limit to 3 lines */
+        -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
         overflow: hidden;
         text-overflow: ellipsis;
     }
 
     .card-text {
-        font-size: 0.6rem; /* Smaller font size for mobile */
+        font-size: 0.9rem;
         margin-bottom: 2px;
         color: #343a40;
     }
 
     .btn {
-        font-size: 0.5rem; /* Smaller font size for mobile buttons */
+        font-size: 0.9rem;
         margin-bottom: 2px;
     }
 }
 
 @media (max-width: 576px) {
     .category-section h2 {
-        font-size: 0.5rem; /* Adjusted font size */
+        font-size: 1rem;
     }
 
     .card {
-        width: 100%; /* Full width for smaller screens */
-        margin: 0 5px; /* Space between cards */
-        min-width: 130px; /* Adjust minimum width */
+        width: 100%;
+        margin: 0 5px;
+        min-width: 130px;
     }
 
     .card-title {
-        font-size: 0.7rem; /* Smaller font size for mobile */
+        font-size: 0.9rem;
         margin-bottom: 2px;
         margin-top: 1px;
         color: #004085;
         display: -webkit-box;
-        -webkit-line-clamp: 2; /* Limit to 3 lines */
+        -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
         overflow: hidden;
         text-overflow: ellipsis;
     }
 
     .card-text {
-        font-size: 0.6rem; /* Smaller font size for mobile */
+        font-size: 0.8rem;
         margin-bottom: 2px;
         color: #343a40;
     }
 
     .btn {
-        font-size: 0.5rem; /* Smaller font size for mobile buttons */
+        font-size: 0.8rem;
         margin-bottom: 2px;
     }
 
     .card-img-top {
-        height: 150px; /* Adjust height for smaller screens */
+        height: 150px;
     }
 
     .footer h5 {
-        font-size: 1.2rem; /* Adjusted font size */
+        font-size: 1.2rem;
     }
 
     .footer p, .footer ul {
-        font-size: 0.8rem; /* Smaller font size */
+        font-size: 0.8rem;
     }
 
-    /* Scroll button */
     .scroll-right {
-        padding: 8px; /* Smaller padding */
-        font-size: 1rem; /* Slightly smaller font size */
+        padding: 8px;
+        font-size: 1rem;
     }
 }
