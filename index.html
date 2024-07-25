@@ -31,29 +31,29 @@
                 <li class="nav-item"><a class="nav-link" href="#">STATIONERY</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">BLOG</a></li>
             </ul>
-            <div class="search-bar">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search Title, Author or ISBN">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button">Search</button>
+            <div class="d-flex align-items-center w-100 justify-content-between">
+                <div class="search-bar">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search Title, Author or ISBN">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button">Search</button>
+                        </div>
                     </div>
                 </div>
+                <ul class="navbar-nav ml-auto d-flex align-items-center">
+                    <li class="nav-item position-relative">
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#cartModal">
+                            <span>🛒</span>
+                            <span class="badge badge-pill position-absolute" id="cart-counter">0</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn" href="#">Checkout</a>
+                    </li>
+                </ul>
             </div>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item position-relative">
-                    <a class="nav-link" href="#" data-toggle="modal" data-target="#cartModal">
-                        <span>🛒</span>
-                        <span class="badge badge-pill position-absolute" id="cart-counter">0</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link btn btn-primary text-white" href="#">Checkout</a>
-                </li>
-            </ul>
         </div>
     </nav>
-
-  
     <div class="admin-panel">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -112,7 +112,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="checkout()">Checkout</button>
+                    <button type="button" class="btn" onclick="checkout()">Checkout</button>
                 </div>
             </div>
         </div>
