@@ -238,17 +238,18 @@ body {
 .btn:hover {
     background-color: #0056b3;
     border-color: #004085;
-    color: #dee2e6;
+    color: white;
 }
 .btn-primary {
     background-color: white;
-    border-color: #007bff;
+    border-color: #94bfec;
     color: #000;
+    font-size: 5px;
 }
 
 .btn-primary:hover {
-    background-color: gray;
-    border-color: #004085;
+    background-color: #90bae7;
+    border-color: #a0c8f3;
 }
 /* Scroll Button */
 .scroll-right {
