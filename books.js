@@ -12,6 +12,7 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
+
 // Reference to Firebase Database
 const database = firebase.database();
 
@@ -197,3 +198,50 @@ function payWithPaystack(event) {
 }
 
 document.getElementById('paymentForm').addEventListener('submit', payWithPaystack);
+
+
+
+    // Get a reference to the database service
+    var db = firebase.database();
+
+    function subscribe(event) {
+        event.preventDefault();
+        var email = document.getElementById('email').value;
+        if (email) {
+            db.ref('subscribers').push({
+                email: email
+            }).then(function() {
+                alert('Subscription successful!');
+            }).catch(function(error) {
+                alert('Subscription failed: ' + error.message);
+            });
+        } else {
+            alert('Please enter a valid email address.');
+        }
+    }
+
+    document.getElementById('subscription-form').addEventListener('submit', subscribe);
+
+
+
+//cookies 
+document.addEventListener('DOMContentLoaded', function () {
+  const cookiesPopup = document.getElementById('cookiesPopup');
+  const acceptCookiesButton = document.getElementById('acceptCookies');
+  const rejectCookiesButton = document.getElementById('rejectCookies');
+
+  // Check if cookies consent has already been given
+  if (!localStorage.getItem('cookiesConsent')) {
+      cookiesPopup.style.display = 'flex';
+  }
+
+  acceptCookiesButton.addEventListener('click', function () {
+      localStorage.setItem('cookiesConsent', 'accepted');
+      cookiesPopup.style.display = 'none';
+  });
+
+  rejectCookiesButton.addEventListener('click', function () {
+      localStorage.setItem('cookiesConsent', 'rejected');
+      cookiesPopup.style.display = 'none';
+  });
+});

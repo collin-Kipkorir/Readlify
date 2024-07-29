@@ -162,21 +162,31 @@
                     </div>
                 </div>
 
-                <!-- Subscription Form -->
-                <div class="col-md-3 mb-4">
-                    <h5>Subscribe to our Newsletter</h5>
-                    <form id="subscription-form">
-                        <div class="form-group">
-                            <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Subscribe</button>
-                    </form>
-                </div>
+               <!-- Subscription Form -->
+<div class="col-md-3 mb-4">
+    <h5>Subscribe to our Newsletter</h5>
+    <form id="subscription-form">
+        <div class="form-group">
+            <input type="email" class="form-control" id="subscription-email" placeholder="Enter your email" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Subscribe</button>
+    </form>
+</div>
+
             </div>
             <div class="text-center mt-4">
                 <p class="mb-0">&copy; 2024 Readify. All Rights Reserved.</p>
             </div>
         </div>
+        <!-- Cookies Popup -->
+<div id="cookiesPopup" class="cookies-popup">
+    <div class="cookies-content">
+        <p>We use cookies to ensure you get the best experience on our website. By continuing, you consent to our use of cookies.</p>
+        <button class="btn btn-primary" id="acceptCookies">Accept</button>
+        <button class="btn btn-secondary" id="rejectCookies">Reject</button>
+    </div>
+</div>
+
     </footer>
 
     <!-- Font Awesome -->
@@ -192,6 +202,10 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://js.paystack.co/v1/inline.js"></script>
+<!-- Firebase App (the core Firebase SDK) -->
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+<!-- Firebase Realtime Database -->
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
 
     <script src="books.js"></script>
 </body>
