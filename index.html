@@ -1,23 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Welcome to Readify Store, your go-to destination for a wide selection of eBooks. Explore our collection and find your next great read.">
-        <title>Readify Store - your go-to destination for a wide selection of eBooks. Explore our collection and find your next great read.</title>
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
-        <link rel="stylesheet" href="styles.css">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Welcome to Readify Store, your go-to destination for a wide selection of eBooks. Explore our collection and find your next great read.">
+    <title>Readify Store - your go-to destination for a wide selection of eBooks. Explore our collection and find your next great read.</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
 <body>
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">
-            <!-- <img src="logo.png" alt="Logo"> -->
-            Readify
-        </a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <a class="navbar-brand" href="#">Readify</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -47,14 +43,12 @@
                             <span class="badge badge-pill position-absolute" id="cart-counter">0</span>
                         </a>
                     </li>
-                    <!-- <li class="nav-link">
-                        <a class="btn" href="#">Checkout</a>
-                    </li> -->
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="admin-panel">
+
+    <div class="admin-panel mt-5 pt-3">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -81,19 +75,16 @@
                 <span class="sr-only">Next</span>
             </a>
         </div>
-       <!-- Container for the books -->
-<div class="container">
-    <div class="category">
-        <div class="books-container row">
-            <!-- Books will be injected here by JavaScript -->
+        <!-- Container for the books -->
+        <div class="container">
+            <div class="category">
+                <div class="books-container row">
+                    <!-- Books will be injected here by JavaScript -->
+                </div>
+            </div>
+            <!-- Add more categories as needed -->
         </div>
     </div>
-    <!-- Add more categories as needed -->
-</div>
-
-    </div>
-
-
 
     <!-- Cart Modal -->
     <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel" aria-hidden="true">
@@ -117,6 +108,31 @@
             </div>
         </div>
     </div>
+<!-- Buy Now Modal -->
+<div class="modal fade" id="buyNowModal" tabindex="-1" role="dialog" aria-labelledby="buyNowModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="buyNowModalLabel">Enter your email to complete the purchase</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="paymentForm">
+                    <div class="form-group">
+                        <label for="email-address">Email address</label>
+                        <input type="email" class="form-control" id="email-address" required>
+                    </div>
+                    <input type="hidden" id="book-price" value="">
+                    <div class="custom-btn-center">
+                        <button type="submit" class="btn custom-btn-green">Pay</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
     <!-- Footer -->
     <footer class="footer bg-dark text-white py-4">
@@ -136,16 +152,16 @@
                         <li>Address: 1234 Ebook St, Reading City, RD 56789</li>
                     </ul>
                 </div>
-             <!-- Social Media Section -->
-<div class="col-md-3 mb-4">
-    <h5>Follow Us</h5>
-    <div class="social-links">
-        <a href="#" class="btn btn-outline-light btn-social" aria-label="Follow us on Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="btn btn-outline-light btn-social" aria-label="Follow us on Twitter"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="btn btn-outline-light btn-social" aria-label="Follow us on Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="btn btn-outline-light btn-social" aria-label="Follow us on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-    </div>
-</div>
+                <!-- Social Media Section -->
+                <div class="col-md-3 mb-4">
+                    <h5>Follow Us</h5>
+                    <div class="social-links">
+                        <a href="#" class="btn btn-outline-light btn-social" aria-label="Follow us on Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="btn btn-outline-light btn-social" aria-label="Follow us on Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="btn btn-outline-light btn-social" aria-label="Follow us on Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="btn btn-outline-light btn-social" aria-label="Follow us on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
 
                 <!-- Subscription Form -->
                 <div class="col-md-3 mb-4">
@@ -166,23 +182,18 @@
 
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Firebase App (the core Firebase SDK) -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <!-- Firebase Realtime Database -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://js.paystack.co/v1/inline.js"></script>
 
-<!-- Font Awesome -->
-<script src="https://kit.fontawesome.com/a076d05399.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<!-- Firebase App (the core Firebase SDK) -->
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
-<!-- Firebase Realtime Database -->
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="books.js"></script>
+    <script src="books.js"></script>
 </body>
 </html>

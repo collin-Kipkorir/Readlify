@@ -58,20 +58,21 @@ function fetchBooksFromFirebase() {
         const bookElement = document.createElement("div");
         bookElement.classList.add("book");
         bookElement.innerHTML = `
-          <div class="card">
-            <img src="${book.cover}" class="card-img-top" alt="${book.title}">
-            <div class="card-body">
-              <h5 class="card-title">${book.title}</h5>
-              <p class="card-text">Author: ${book.author}</p>
-              <p class="card-text">Ksh.${book.price.toFixed(2)}</p>
-              <div class="button-container d-flex justify-content-between">
-                <a class="btn-cart" href="#" onclick="addToCart('${book.id}')">
-                   <span>🛒</span>
-                </a>
-                <button class="btn btn-primary" onclick="buyNow('${book.id}')">Buy Now</button>
-              </div>
-            </div>
-          </div>
+<div class="card">
+    <img src="${book.cover}" class="card-img-top" alt="${book.title}">
+    <div class="card-body">
+        <h5 class="card-title">${book.title}</h5>
+        <p class="card-text">Author: ${book.author}</p>
+        <p class="card-text">Ksh.${book.price.toFixed(2)}</p>
+        <div class="button-container d-flex justify-content-between">
+            <a class="[btn-cart]" href="#" onclick="addToCart('${book.id}')">
+                <span>🛒</span>
+            </a>
+            <button class="btn btn-primary" onclick="buyNow('${book.price.toFixed(2)}')">Buy Now</button>
+        </div>
+    </div>
+</div>
+
         `;
         bookList.appendChild(bookElement);
       });
@@ -159,3 +160,40 @@ document.addEventListener("scroll", (event) => {
     updateScrollButtons();
   }
 });
+
+function buyNow(price) {
+  // Set the book price in the hidden input field
+  document.getElementById('book-price').value = price;
+  // Show the modal
+  $('#buyNowModal').modal('show');
+}
+
+function payWithPaystack(event) {
+  event.preventDefault();
+  var email = document.getElementById('email-address').value;
+  var amount = document.getElementById('book-price').value;
+
+  var handler = PaystackPop.setup({
+      key: 'pk_test_788c6d0ba158134e052e2423afa798ffeee02c1c', // replace with your actual Paystack public key
+      email: email,
+      amount: amount * 100, // Convert to the smallest currency unit
+      currency: 'KES',
+      onClose: function () {
+          alert('Payment cancelled');
+      },
+      callback: function (response) {
+         // alert('Payment successful. Transaction reference: ' + response.reference);
+          // Close the modal
+          $('#buyNowModal').modal('hide');
+          // Initiate the PDF download
+          var link = document.createElement('a');
+          link.href = 'files/Business-Ideas-eBook.pdf'; // Replace with the actual path to the PDF file
+          link.download = 'Biz-Ideas.pdf'; // Specify the name of the downloaded file
+          link.click();
+      }
+  });
+
+  handler.openIframe();
+}
+
+document.getElementById('paymentForm').addEventListener('submit', payWithPaystack);

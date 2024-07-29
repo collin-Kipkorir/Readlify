@@ -4,7 +4,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #212529;
     margin: 0;
-    padding: 0;
+    padding-top: 70px;
 }
 
 /* Admin Panel Styles */
@@ -228,6 +228,16 @@ body {
     text-align: center;
 }
 
+.custom-btn-center {
+    display: flex;
+    justify-content: center;
+}
+
+.custom-btn-green {
+    background-color: green;
+    border-color: green;
+    width: 150px;
+}
 
 .btn{
     background-color: #007bff;
@@ -244,7 +254,7 @@ body {
     background-color: white;
     border-color: #94bfec;
     color: #000;
-    font-size: 5px;
+    font-size: 10px;
 }
 
 .btn-primary:hover {
@@ -335,6 +345,10 @@ body {
     flex: 1 1 100%;
     margin-bottom: 15px;
 }
+.btn-cart{
+    align-items: center;
+    margin-top: 4px;
+}
 
 /* Responsive Design Adjustments */
 @media (max-width: 992px) {
@@ -353,6 +367,12 @@ body {
 
     .books-container {
         min-width: 150px;
+    }
+    .btn-primary {
+        background-color: white;
+        border-color: #94bfec;
+        color: #000;
+        font-size: 10px;
     }
 }
 
@@ -391,6 +411,12 @@ body {
     .btn {
         font-size: 0.9rem;
         margin-bottom: 2px;
+    }
+    .btn-primary {
+        background-color: white;
+        border-color: #94bfec;
+        color: #000;
+        font-size: 10px;
     }
 }
 
@@ -443,5 +469,11 @@ body {
     .scroll-right {
         padding: 8px;
         font-size: 1rem;
+    }
+    .btn-primary {
+        background-color: white;
+        border-color: #94bfec;
+        color: #000;
+        font-size: 9px;
     }
 }
