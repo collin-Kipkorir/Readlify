@@ -6,6 +6,7 @@
     <title>Admin Panel</title>
     <!-- Add Firebase SDK -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
@@ -14,8 +15,9 @@
         body {
             font-family: Arial, sans-serif;
         }
+
         .admin-panel {
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
         }
         .admin-panel form div {
@@ -95,54 +97,38 @@
         .carousel-control-next-icon {
             background-color: #4CAF50;
         }
+        .loginForm {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            width: 100%;
+            box-sizing: border-box;
+        }
     </style>
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">
-            <img src="logo.png" alt="Logo">
-            Readify
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item"><a class="nav-link" href="#">ALL</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">BOOKS</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">TEXTBOOKS</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">EBOOKS</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">AUDIOBOOKS</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">GAMES & 
-                <li class="nav-item"><a class="nav-link" href="#">MAGAZINES</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">STATIONERY</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">GIFTS</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">BLOG</a></li>
-            </ul>
-            <div class="search-bar">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search Title, Author or ISBN">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button">Search</button>
+    <div class="loginForm" style="display: flex; align-items: center; justify-content: center;">
+        <div class="col-md-6" style="max-width: 400px;">
+            <div id="loginForm" style="padding: 20px; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); background-color: #fff; border-radius: 10px;">
+                <h2 class="text-center">Admin Login</h2>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" class="form-control" required>
                     </div>
-                </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                </form>
             </div>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item position-relative">
-                    <a class="nav-link" href="#" data-toggle="modal" data-target="#cartModal">
-                        <span>🛒</span>
-                        <span class="badge badge-pill position-absolute" id="cart-counter">0</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link btn btn-primary text-white" href="#">Checkout</a>
-                </li>
-            </ul>
         </div>
-    </nav>
-
-  
+    </div>
+<!-- Admin Panel -->
+<div id="adminPanel" style="display:none;">  
     <div class="admin-panel">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -198,7 +184,7 @@
             <!-- Books will be listed here with edit and delete buttons -->
         </div>
     </div>
-
+</div>
     <!-- Firebase and Admin Panel Script -->
     <script>
         // Your Firebase configuration
@@ -300,6 +286,31 @@
                 categoryInput.value = book.category;
             });
         }
+        const correctUsername = "admin";
+const correctPassword = "admin123";
+
+const loginForm = document.getElementById('login-form');
+const loginFormContainer = document.getElementById('loginForm');
+const adminPanelContainer = document.getElementById('adminPanel');
+
+loginForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    
+    // Get the input values
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    
+    // Check if the credentials are correct
+    if (username === correctUsername && password === correctPassword) {
+    // Remove the login form element
+    loginFormContainer.remove();
+    adminPanelContainer.style.display = "block";
+}
+ else {
+        alert('Incorrect username or password. Please try again.');
+    }
+});
+
 
         // Initialize admin panel on page load
         document.addEventListener('DOMContentLoaded', () => {
@@ -309,6 +320,11 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 
 </body>
 </html>

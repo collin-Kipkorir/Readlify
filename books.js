@@ -66,14 +66,13 @@ function fetchBooksFromFirebase() {
         <p class="card-text">Author: ${book.author}</p>
         <p class="card-text">Ksh.${book.price.toFixed(2)}</p>
         <div class="button-container d-flex justify-content-between">
-            <a class="[btn-cart]" href="#" onclick="addToCart('${book.id}')">
+            <a class="[btn-cart]" href="#" onclick="addToCart(event, '${book.id}')">
                 <span>🛒</span>
             </a>
             <button class="btn btn-primary" onclick="buyNow('${book.price.toFixed(2)}')">Buy Now</button>
         </div>
     </div>
 </div>
-
         `;
         bookList.appendChild(bookElement);
       });
@@ -107,7 +106,8 @@ function updateScrollButtons() {
 // Cart functionality
 let cart = [];
 
-function addToCart(bookId) {
+function addToCart(event, bookId) {
+  event.preventDefault();
   const booksRef = database.ref("books");
   booksRef.child(bookId).once("value", (snapshot) => {
     const book = snapshot.val();
@@ -122,22 +122,34 @@ function renderCart() {
   cartElement.innerHTML = "";
   cartCounter.innerText = cart.length;
 
+  let subtotal = 0;
+
   cart.forEach((item) => {
-    const cartItem = document.createElement("div");
-    cartItem.classList.add("col-6", "col-md-2", "mb-4");
-    cartItem.innerHTML = `
-      <div class="card">
-        <img src="${item.cover}" class="card-img-top" alt="${item.title}">
-        <div class="card-body">
-          <h7 class="card-title">${item.title}</h7>
-          <p class="card-text">Price: Ksh.${item.price.toFixed(2)}</p>
-          <button class="btn btn-danger" onclick="removeFromCart('${item.id}')">Remove</button>
-        </div>
-      </div>
-    `;
-    cartElement.appendChild(cartItem);
+      subtotal += item.price;
+
+      const cartItem = document.createElement("div");
+      cartItem.classList.add("row", "mb-4");
+      cartItem.innerHTML = `
+          <div class="col-md-2">
+              <img src="${item.cover}" class="img-fluid" alt="${item.title}">
+          </div>
+          <div class="col-md-7">
+              <h5 class="card-title">${item.title}</h5>
+              <p class="card-text">by ${item.author}</p>
+              <p class="card-text">eBook (EPUB 3, Reflowable)</p>
+              <button class="btn btn-link text-danger p-0" onclick="removeFromCart('${item.id}')">Remove</button>
+          </div>
+          <div class="col-md-3 text-right">
+              <h5>Ksh.${item.price.toFixed(2)}</h5>
+          </div>
+      `;
+      cartElement.appendChild(cartItem);
   });
+
+  const subtotalElement = document.getElementById("subtotal");
+  subtotalElement.innerText = `Subtotal: Ksh.${subtotal.toFixed(2)}`;
 }
+
 
 function removeFromCart(bookId) {
   cart = cart.filter((item) => item.id !== bookId);
@@ -223,25 +235,24 @@ document.getElementById('paymentForm').addEventListener('submit', payWithPaystac
     document.getElementById('subscription-form').addEventListener('submit', subscribe);
 
 
-
-//cookies 
+//cookies
 document.addEventListener('DOMContentLoaded', function () {
-  const cookiesPopup = document.getElementById('cookiesPopup');
-  const acceptCookiesButton = document.getElementById('acceptCookies');
-  const rejectCookiesButton = document.getElementById('rejectCookies');
+  var cookiesPopup = document.getElementById('cookiesPopup');
+  var acceptButton = document.getElementById('acceptCookies');
+  var rejectButton = document.getElementById('rejectCookies');
 
-  // Check if cookies consent has already been given
-  if (!localStorage.getItem('cookiesConsent')) {
-      cookiesPopup.style.display = 'flex';
-  }
+  // Show the cookies popup
+  cookiesPopup.classList.add('visible');
 
-  acceptCookiesButton.addEventListener('click', function () {
-      localStorage.setItem('cookiesConsent', 'accepted');
-      cookiesPopup.style.display = 'none';
+  acceptButton.addEventListener('click', function () {
+      // Hide the popup and set a cookie or local storage item
+      cookiesPopup.classList.remove('visible');
+      document.cookie = "cookiesAccepted=true; path=/";
   });
 
-  rejectCookiesButton.addEventListener('click', function () {
-      localStorage.setItem('cookiesConsent', 'rejected');
-      cookiesPopup.style.display = 'none';
+  rejectButton.addEventListener('click', function () {
+      // Hide the popup and set a cookie or local storage item
+      cookiesPopup.classList.remove('visible');
+      document.cookie = "cookiesRejected=true; path=/";
   });
 });

@@ -13,7 +13,6 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <a class="navbar-brand" href="#">Readify</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -27,27 +26,14 @@
                 <li class="nav-item"><a class="nav-link" href="#">STATIONERY</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">BLOG</a></li>
             </ul>
-            <div class="d-flex align-items-center w-100 justify-content-between">
-                <div class="search-bar">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search Title, Author or ISBN">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="button">Search</button>
-                        </div>
-                    </div>
-                </div>
-                <ul class="navbar-nav ml-auto d-flex align-items-center">
-                    <li class="nav-item position-relative">
-                        <a class="nav-link" href="#" data-toggle="modal" data-target="#cartModal">
-                            <span>🛒</span>
-                            <span class="badge badge-pill position-absolute" id="cart-counter">0</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+        </div>
+        <div class="cart-container ml-auto">
+            <a class="nav-link" href="#" data-toggle="modal" data-target="#cartModal">
+                <span>🛒</span>
+                <span class="badge badge-pill" id="cart-counter">0</span>
+            </a>
         </div>
     </nav>
-
     <div class="admin-panel mt-5 pt-3">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -86,28 +72,32 @@
         </div>
     </div>
 
-    <!-- Cart Modal -->
-    <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="cartModalLabel">Shopping Cart</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+   <!-- Cart Modal -->
+<div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cartModalLabel">Shopping Cart</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row" id="cart">
+                    <!-- Shopping cart items will be injected here by JavaScript -->
                 </div>
-                <div class="modal-body">
-                    <div class="row" id="cart">
-                        <!-- Shopping cart items will be injected here by JavaScript -->
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn" onclick="checkout()">Checkout</button>
+            </div>
+            <div class="modal-footer d-flex justify-content-between">
+                <div id="subtotal" class="font-weight-bold"></div>
+                <div>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Continue shopping</button>
+                    <button type="button" class="btn btn-danger" onclick="checkout()">Checkout</button>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
 <!-- Buy Now Modal -->
 <div class="modal fade" id="buyNowModal" tabindex="-1" role="dialog" aria-labelledby="buyNowModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -147,8 +137,8 @@
                     <h5>Contact Us</h5>
                     <ul class="list-unstyled">
                         <li>Email: support@readify.com</li>
-                        <li>Phone: +1 234 567 890</li>
-                        <li>Address: 1234 Ebook St, Reading City, RD 56789</li>
+                        <li>Phone: +254 723 914 386</li>
+                        <li>Address: 65-00100 Mirema Drive, Garden City, Nairobi</li>
                     </ul>
                 </div>
                 <!-- Social Media Section -->
