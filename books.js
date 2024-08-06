@@ -12,7 +12,6 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-
 // Reference to Firebase Database
 const database = firebase.database();
 
@@ -69,7 +68,7 @@ function fetchBooksFromFirebase() {
             <a class="[btn-cart]" href="#" onclick="addToCart(event, '${book.id}')">
                 <span>🛒</span>
             </a>
-            <button class="btn btn-primary" onclick="buyNow('${book.price.toFixed(2)}')">Buy Now</button>
+            <button class="btn btn-primary" onclick="buyNow('${book.price.toFixed(2)}', '${book.id}')">Buy Now</button>
         </div>
     </div>
 </div>
@@ -174,17 +173,29 @@ document.addEventListener("scroll", (event) => {
   }
 });
 
-function buyNow(price) {
-  // Set the book price in the hidden input field
+function buyNow(price, bookId) {
+  // Set the book price and id in the hidden input fields
   document.getElementById('book-price').value = price;
+  document.getElementById('book-id').value = bookId;
   // Show the modal
   $('#buyNowModal').modal('show');
 }
+document.querySelector('.btn-close').addEventListener('click', function() {
+  var modalElement = document.getElementById('buyNowModal');
+  var modal = bootstrap.Modal.getInstance(modalElement);
+  if (modal) {
+    modal.hide();
+  } else {
+    modal = new bootstrap.Modal(modalElement);
+    modal.hide();
+  }
+});
 
 function payWithPaystack(event) {
   event.preventDefault();
   var email = document.getElementById('email-address').value;
   var amount = document.getElementById('book-price').value;
+  var bookId = document.getElementById('book-id').value;
 
   var handler = PaystackPop.setup({
       key: 'pk_test_788c6d0ba158134e052e2423afa798ffeee02c1c', // replace with your actual Paystack public key
@@ -195,45 +206,51 @@ function payWithPaystack(event) {
           alert('Payment cancelled');
       },
       callback: function (response) {
-         // alert('Payment successful. Transaction reference: ' + response.reference);
           // Close the modal
           $('#buyNowModal').modal('hide');
           // Initiate the PDF download
-          var link = document.createElement('a');
-          link.href = 'files/Business-Ideas-eBook.pdf'; // Replace with the actual path to the PDF file
-          link.download = 'Biz-Ideas.pdf'; // Specify the name of the downloaded file
-          link.click();
+          downloadBook(bookId);
       }
   });
 
   handler.openIframe();
 }
 
+function downloadBook(bookId) {
+  // Fetch the book URL from Firebase
+  database.ref('books/' + bookId).once('value').then(function(snapshot) {
+    var book = snapshot.val();
+    var link = document.createElement('a');
+    link.href = book.pdfUrl; // URL of the book's PDF file
+    link.download = book.title + '.pdf'; // Specify the name of the downloaded file
+    link.click();
+  }).catch(function(error) {
+    console.error('Error retrieving book data:', error);
+  });
+}
+
 document.getElementById('paymentForm').addEventListener('submit', payWithPaystack);
 
+// Get a reference to the database service
+var db = firebase.database();
 
+function subscribe(event) {
+  event.preventDefault();
+  var email = document.getElementById('subscription-email').value;
+  if (email) {
+    db.ref('subscribers').push({
+      email: email
+    }).then(function() {
+      alert('Subscription successful!');
+    }).catch(function(error) {
+      alert('Subscription failed: ' + error.message);
+    });
+  } else {
+    alert('Please enter a valid email address.');
+  }
+}
 
-    // Get a reference to the database service
-    var db = firebase.database();
-
-    function subscribe(event) {
-        event.preventDefault();
-        var email = document.getElementById('email').value;
-        if (email) {
-            db.ref('subscribers').push({
-                email: email
-            }).then(function() {
-                alert('Subscription successful!');
-            }).catch(function(error) {
-                alert('Subscription failed: ' + error.message);
-            });
-        } else {
-            alert('Please enter a valid email address.');
-        }
-    }
-
-    document.getElementById('subscription-form').addEventListener('submit', subscribe);
-
+document.getElementById('subscription-form').addEventListener('submit', subscribe);
 
 //cookies
 document.addEventListener('DOMContentLoaded', function () {
@@ -245,14 +262,14 @@ document.addEventListener('DOMContentLoaded', function () {
   cookiesPopup.classList.add('visible');
 
   acceptButton.addEventListener('click', function () {
-      // Hide the popup and set a cookie or local storage item
-      cookiesPopup.classList.remove('visible');
-      document.cookie = "cookiesAccepted=true; path=/";
+    // Hide the popup and set a cookie or local storage item
+    cookiesPopup.classList.remove('visible');
+    document.cookie = "cookiesAccepted=true; path=/";
   });
 
   rejectButton.addEventListener('click', function () {
-      // Hide the popup and set a cookie or local storage item
-      cookiesPopup.classList.remove('visible');
-      document.cookie = "cookiesRejected=true; path=/";
+    // Hide the popup and set a cookie or local storage item
+    cookiesPopup.classList.remove('visible');
+    document.cookie = "cookiesRejected=true; path=/";
   });
 });

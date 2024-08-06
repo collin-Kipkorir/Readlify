@@ -6,9 +6,6 @@
     <meta name="description" content="Welcome to Readify Store, your go-to destination for a wide selection of eBooks. Explore our collection and find your next great read.">
     <title>Readify Store - your go-to destination for a wide selection of eBooks. Explore our collection and find your next great read.</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -45,6 +42,7 @@
             </div>
         </div>
     </nav>
+
     <div class="admin-panel mt-5 pt-3">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -72,67 +70,66 @@
                 <span class="sr-only">Next</span>
             </a>
         </div>
-        <!-- Container for the books -->
         <div class="container">
+            <!-- Container for the books -->
             <div class="category">
                 <div class="books-container row">
                     <!-- Books will be injected here by JavaScript -->
                 </div>
             </div>
-            <!-- Add more categories as needed -->
         </div>
     </div>
 
-   <!-- Cart Modal -->
-<div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="cartModalLabel">Shopping Cart</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="row" id="cart">
-                    <!-- Shopping cart items will be injected here by JavaScript -->
+    <!-- Cart Modal -->
+    <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cartModalLabel">Shopping Cart</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-            </div>
-            <div class="modal-footer d-flex justify-content-between">
-                <div id="subtotal" class="font-weight-bold"></div>
-                <div>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Continue shopping</button>
-                    <button type="button" class="btn btn-danger" onclick="checkout()">Checkout</button>
+                <div class="modal-body">
+                    <div class="row" id="cart">
+                        <!-- Shopping cart items will be injected here by JavaScript -->
+                    </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-between">
+                    <div id="subtotal" class="font-weight-bold"></div>
+                    <div>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Continue shopping</button>
+                        <button type="button" class="btn btn-danger" onclick="checkout()">Checkout</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- Buy Now Modal -->
-<div class="modal fade" id="buyNowModal" tabindex="-1" role="dialog" aria-labelledby="buyNowModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form id="paymentForm">
-                    <div class="form-group">
-                        <label for="email-address">Email address</label>
-                        <input type="email" class="form-control" id="email-address" required>
-                    </div>
-                    <input type="hidden" id="book-price" value="">
-                    <div class="custom-btn-center">
-                        <button type="submit" class="btn custom-btn-green">Pay</button>
-                    </div>
-                </form>
-            </div>
+<!-- Modal for Payment -->
+<div class="modal fade" id="buyNowModal" tabindex="-1" aria-labelledby="buyNowModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h6 class="modal-title" id="buyNowModalLabel">Buy Now</h6>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
         </div>
+        <div class="modal-body">
+          <form id="paymentForm">
+            <input type="hidden" id="book-price" name="book-price" value="">
+            <input type="hidden" id="book-id" name="book-id" value="">
+            <div class="mb-3">
+              <label for="email-address" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="email-address" name="email-address" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Pay Now</button>
+          </form>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
+  
+  
 
     <!-- Footer -->
     <footer class="footer bg-dark text-white py-4">
@@ -141,7 +138,7 @@
                 <!-- About Section -->
                 <div class="col-md-3 mb-4">
                     <h5>About Readify</h5>
-                    <p>Readify is your go-to online ebook store. Explore a wide range of ebooks across different genres. Enjoy seamless shopping and reading experience.</p>
+                    <p>Readify is your go-to online ebook store. Explore a wide range of ebooks across different genres. Enjoy a seamless shopping and reading experience.</p>
                 </div>
                 <!-- Contact Section -->
                 <div class="col-md-3 mb-4">
@@ -162,32 +159,29 @@
                         <a href="#" class="btn btn-outline-light btn-social" aria-label="Follow us on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
-
-               <!-- Subscription Form -->
-<div class="col-md-3 mb-4">
-    <h5>Subscribe to our Newsletter</h5>
-    <form id="subscription-form">
-        <div class="form-group">
-            <input type="email" class="form-control" id="subscription-email" placeholder="Enter your email" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Subscribe</button>
-    </form>
-</div>
-
+                <!-- Subscription Form -->
+                <div class="col-md-3 mb-4">
+                    <h5>Subscribe to our Newsletter</h5>
+                    <form id="subscription-form">
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="subscription-email" placeholder="Enter your email" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
             </div>
             <div class="text-center mt-4">
                 <p class="mb-0">&copy; 2024 Readify. All Rights Reserved.</p>
             </div>
         </div>
         <!-- Cookies Popup -->
-<div id="cookiesPopup" class="cookies-popup">
-    <div class="cookies-content">
-        <p>We use cookies to ensure you get the best experience on our website. By continuing, you consent to our use of cookies.</p>
-        <button class="btn btn-primary" id="acceptCookies">Accept</button>
-        <button class="btn btn-secondary" id="rejectCookies">Reject</button>
-    </div>
-</div>
-
+        <div id="cookiesPopup" class="cookies-popup">
+            <div class="cookies-content">
+                <p>We use cookies to ensure you get the best experience on our website. By continuing, you consent to our use of cookies.</p>
+                <button class="btn btn-primary" id="acceptCookies">Accept</button>
+                <button class="btn btn-secondary" id="rejectCookies">Reject</button>
+            </div>
+        </div>
     </footer>
 
     <!-- Font Awesome -->
@@ -195,19 +189,13 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://js.paystack.co/v1/inline.js"></script>
     <!-- Firebase App (the core Firebase SDK) -->
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
     <!-- Firebase Realtime Database -->
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://js.paystack.co/v1/inline.js"></script>
-<!-- Firebase App (the core Firebase SDK) -->
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
-<!-- Firebase Realtime Database -->
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
 
+    <!-- Your custom JavaScript -->
     <script src="books.js"></script>
 </body>
 </html>
